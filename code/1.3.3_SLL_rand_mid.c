@@ -20,19 +20,22 @@ typedef struct Node{
 typedef struct Node *LinkList;
 
 
+/* 初始化顺序线性表 */
 Status InitList(LinkList *L){
-	*L = (LinkList)malloc(sizeof(Node));
+	*L = (LinkList)malloc(sizeof(Node)); /* 产生头结点,并使L指向此头结点 */
 
-	if (!(*L))
+	if (!(*L))   /* 存储分配失败 */
 		return ERROR;
 
 	(*L)->next = NULL;
 	return OK;
 }
 
+
+/* 初始条件：顺序线性表L已存在。操作结果：返回L中数据元素个数 */
 int ListLength(LinkList L){
 	int cnt = 0;
-	LinkList p = L->next;
+	LinkList p = L->next;  /* p指向第一个结点 */
 	while(p){
 		p = p->next;
 		cnt++;
@@ -41,8 +44,8 @@ int ListLength(LinkList L){
 }
 
 
-
-
+/* 初始条件：顺序线性表L已存在 */
+/* 操作结果：依次对L的每个数据元素输出 */
 Status ListTraverse(LinkList L){
 	LinkList p = L->next;
 	while(p){
@@ -55,12 +58,13 @@ Status ListTraverse(LinkList L){
 }
 
 
-
+/*  随机产生n个元素的值，建立带表头结点的单链线性表L（尾插法） */
 Status CreateListTail(LinkList *L, int n){
 	LinkList p, r;
 	int i;
 	srand(time(0));
-	r = (*L);
+	/*由于程序一开始就调用了InitList,所以不必再初始化头结点*/
+	r = (*L);   /* r为指向尾部的结点 */
 
 	for(i=0; i<n; i++){
 		p = (LinkList)malloc(sizeof(Node));
@@ -68,10 +72,10 @@ Status CreateListTail(LinkList *L, int n){
 			return ERROR;
 		p->data = rand()%100+1;
 		r->next = p;
-		r = p;
+		r = p;   /* 将当前的新结点定义为表尾终端结点 */
 	}
 
-	r->next = NULL;
+	r->next = NULL;  /* 表示当前链表结束 */
 	return OK;
 }
 
