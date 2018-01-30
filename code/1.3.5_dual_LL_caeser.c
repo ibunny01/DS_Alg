@@ -38,7 +38,6 @@ Status InitLinkList(DuLinkList *L){
 		p->next = q;
 
 		p = q;
-
 	}
 
 	// 最后去掉头结点，最后一个结点指向第一个结点
@@ -60,7 +59,6 @@ void Caeser(DuLinkList *L, int i){
 		do {
 			(*L) = (*L)->next;
 		}while(++i);
-
 }
 
 
