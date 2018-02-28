@@ -12,6 +12,7 @@ int nextxy(int *x, int *y, int count)
 	switch(count)
 	{
 		case 0:
+			// 图中位置3
 			if( *x+2<=X-1 && *y-1>=0 && chess[*x+2][*y-1]==0 )
 			{
 				*x = *x + 2;
@@ -21,6 +22,7 @@ int nextxy(int *x, int *y, int count)
 			break;
 
 		case 1:
+			// 图中位置
 			if( *x+2<=X-1 && *y+1<=Y-1 && chess[*x+2][*y+1]==0 )
 			{
 				*x = *x + 2;
